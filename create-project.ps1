@@ -8,6 +8,11 @@ function New-RabbitMQProject {
     )
 
     $ProjectDirectory = Join-Path -Path $OutputDirectory -ChildPath $ProjectName
+
+    if ( !(Test-Path $ProjectDirectory)) {
+        New-Item -Path $ProjectDirectory -ItemType Directory
+    }
+
     # Create new console project
     dotnet new console -n $ProjectName  --use-program-main -o "$ProjectDirectory"
     Write-Host "Created project '$ProjectName' in '$ProjectDirectory'"
