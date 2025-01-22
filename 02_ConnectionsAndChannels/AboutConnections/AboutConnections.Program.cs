@@ -25,7 +25,7 @@ class Program
         // await ConnectionsThrowsExceptionIfServerInfoIsInvalid();
         // await ConnectionsThrowsExceptionIfCredentailsAreInvalid();
         // await ConnectionMayCloseAfterSuccessfullyConnected();
-        await RabbitMqClientMayRecoveryBrokenConnections();
+        // await RabbitMqClientMayRecoveryBrokenConnections();
 
         WriteLine("Press [enter] to exit");
         ReadLine();
@@ -169,5 +169,6 @@ class Program
         WriteLine("Please, start the RabbitMq server to test the connection recovery then press [enter]. ");
         ReadLine();
     }
+
 }
 
