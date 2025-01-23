@@ -1,10 +1,6 @@
 using static System.Console;
 using RabbitMQ.Client;
-using Common;
-using System.Threading.Tasks;
-using System.Linq.Expressions;
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 
 namespace ConnectionsAndChannels.EventHandlersOfConnections;
 
@@ -14,43 +10,9 @@ class Program
     {
         WriteLine("Hello, EventHandlersOfConnections!");
 
-        // await DemonstrateConnectionCallbackEvent();
         // await DemonstrateConnectionBlockedEvent();
-        await DemonstrateRecoveryEvents();
-    }
-
-    static async Task DemonstrateConnectionCallbackEvent()
-    {
-        var factory = new ConnectionFactory
-        {
-            HostName = "localhost",
-            UserName = "guest",
-            Password = "guest",
-        };
-
-        using var connection = await factory.CreateConnectionAsync();
-
-        connection.ConnectionShutdownAsync += async (sender, eventArgs) =>
-        {
-            ForegroundColor = ConsoleColor.Magenta;
-            WriteLine($"Connection shutdown: {eventArgs.ReplyText}");
-            ResetColor();
-            throw new Exception("Connection shutdown");
-            // await Task.CompletedTask;
-        };
-
-        // The callback exception event is raised when an exception is 
-        // thrown in the event handler of connection.
-        connection.CallbackExceptionAsync += async (sender, eventArgs) =>
-        {
-            ForegroundColor = ConsoleColor.Red;
-            WriteLine($"Callback exception: {eventArgs.Exception.Message}");
-            ResetColor();
-            await Task.CompletedTask;
-        };
-
-        WriteLine("Please, shutdown the RabbitMq server to test the connection closing then press [enter]. ");
-        ReadLine();
+        // await DemonstrateRecoveryEvents();
+        await DemonstrateCallbackExceptionEvent();
     }
 
     static async Task DemonstrateConnectionBlockedEvent()
@@ -128,7 +90,6 @@ class Program
             Password = "guest",
             AutomaticRecoveryEnabled = true,
             NetworkRecoveryInterval = TimeSpan.FromSeconds(5),
-            
         };
 
         Stopwatch stopwatch = new();
@@ -170,5 +131,59 @@ class Program
         WriteLine("Please, shutdown the RabbitMq server to test the connection closing then press [enter]. ");
         ReadLine();
     }
-}
 
+    static async Task DemonstrateCallbackExceptionEvent()
+    {
+        var factory = new ConnectionFactory
+        {
+            HostName = "localhost",
+            UserName = "guest",
+            Password = "guest",
+            AutomaticRecoveryEnabled = true,
+            NetworkRecoveryInterval = TimeSpan.FromSeconds(5),
+        };
+
+        using var connection = await factory.CreateConnectionAsync();
+
+        // The callback exception event is raised when an exception is 
+        // thrown in the event handler of connection.
+        connection.CallbackExceptionAsync += async (sender, eventArgs) =>
+        {
+            ForegroundColor = ConsoleColor.Red;
+            WriteLine($"Callback exception:");
+            WriteLine($"\tMessage: {eventArgs.Exception.Message}\n");
+            WriteLine($"\tSource: {eventArgs.Exception.Source}\n");
+            WriteLine($"\tStack Trace: {eventArgs.Exception.StackTrace}\n");
+
+            ResetColor();
+            await Task.CompletedTask;
+        };
+
+        connection.ConnectionShutdownAsync += async (sender, eventArgs) =>
+        {
+            ForegroundColor = ConsoleColor.Magenta;
+            WriteLine($"Connection shutdown: {eventArgs.ReplyText}");
+            ResetColor();
+            throw new Exception("Connection shutdown");
+        };
+
+        connection.RecoverySucceededAsync += async (sender, eventArgs) =>
+        {
+            ForegroundColor = ConsoleColor.Green;
+            WriteLine("Recovery succeeded");
+            ResetColor();
+            throw new Exception("Exception when Recovery succeeded");
+        };
+
+        connection.ConnectionRecoveryErrorAsync += async (sender, eventArgs) =>
+        {
+            ForegroundColor = ConsoleColor.DarkYellow;
+            WriteLine("Recovery error");
+            ResetColor();
+            throw new Exception("Exception when Recovery failed");
+        };
+
+        WriteLine("Please, shutdown the RabbitMq server to test the connection closing then press [enter]. ");
+        ReadLine();
+    }
+}
