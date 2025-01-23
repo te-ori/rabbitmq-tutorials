@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHandlersOfConnections"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectionLeaks", "02_ConnectionsAndChannels\ConnectionLeaks\ConnectionLeaks.csproj", "{B9D4B286-CCEC-42BC-973F-03764ADD45E9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Messages", "02_Messages", "{4E09F58B-C678-46B7-84C0-FE99FF201DE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageLifeCycle", "02_Messages\MessageLifeCycle\MessageLifeCycle.csproj", "{C50F175D-B0B1-4FD8-BFED-52675B31197F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,10 @@ Global
 		{B9D4B286-CCEC-42BC-973F-03764ADD45E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9D4B286-CCEC-42BC-973F-03764ADD45E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9D4B286-CCEC-42BC-973F-03764ADD45E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C50F175D-B0B1-4FD8-BFED-52675B31197F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C50F175D-B0B1-4FD8-BFED-52675B31197F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C50F175D-B0B1-4FD8-BFED-52675B31197F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C50F175D-B0B1-4FD8-BFED-52675B31197F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,5 +90,6 @@ Global
 		{57DEBB7A-975B-467C-AA53-C4A07EFD3810} = {B94DCE0E-EB63-47F5-AB2B-47900741F6D7}
 		{4B3EDEC0-532B-40E1-934C-22ED749CB618} = {B94DCE0E-EB63-47F5-AB2B-47900741F6D7}
 		{B9D4B286-CCEC-42BC-973F-03764ADD45E9} = {B94DCE0E-EB63-47F5-AB2B-47900741F6D7}
+		{C50F175D-B0B1-4FD8-BFED-52675B31197F} = {4E09F58B-C678-46B7-84C0-FE99FF201DE0}
 	EndGlobalSection
 EndGlobal
