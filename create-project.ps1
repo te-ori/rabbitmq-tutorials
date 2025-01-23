@@ -36,7 +36,7 @@ function New-RabbitMQProject {
     $currentContent = Get-Content "$ProjectDirectory\$ProgramFileName" -Raw
     Write-Host "Current content read from '$ProjectDirectory\$ProgramFileName'"
 
-    $namespace= "$($ProjectDirectory | Select-String -Pattern "^([\W\d]+).([a-zA-Z\d]+)" | % {$_.Matches[0].Groups[2].Value}).$($ProjectName | Select-String -Pattern "^([\W\d]+).([a-zA-Z\d]+)" | % {$_.Matches[0].Groups[2].Value})"
+    $namespace= "$($ProjectDirectory | Select-String -Pattern "^([\W\d]+).([a-zA-Z\d]+)" | % {$_.Matches[0].Groups[2].Value}).$($ProjectName)"
     Write-Host "Namespace: $namespace"
 
     $newContent = @"
