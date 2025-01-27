@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02_Messages", "02_Messages"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageLifeCycle", "02_Messages\MessageLifeCycle\MessageLifeCycle.csproj", "{C50F175D-B0B1-4FD8-BFED-52675B31197F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AckNack", "02_Messages\AckNack\AckNack.csproj", "{074DB252-68D4-4697-AA6C-F54E20BE45D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{C50F175D-B0B1-4FD8-BFED-52675B31197F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C50F175D-B0B1-4FD8-BFED-52675B31197F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C50F175D-B0B1-4FD8-BFED-52675B31197F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{074DB252-68D4-4697-AA6C-F54E20BE45D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{074DB252-68D4-4697-AA6C-F54E20BE45D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{074DB252-68D4-4697-AA6C-F54E20BE45D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{074DB252-68D4-4697-AA6C-F54E20BE45D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +97,6 @@ Global
 		{4B3EDEC0-532B-40E1-934C-22ED749CB618} = {B94DCE0E-EB63-47F5-AB2B-47900741F6D7}
 		{B9D4B286-CCEC-42BC-973F-03764ADD45E9} = {B94DCE0E-EB63-47F5-AB2B-47900741F6D7}
 		{C50F175D-B0B1-4FD8-BFED-52675B31197F} = {4E09F58B-C678-46B7-84C0-FE99FF201DE0}
+		{074DB252-68D4-4697-AA6C-F54E20BE45D9} = {4E09F58B-C678-46B7-84C0-FE99FF201DE0}
 	EndGlobalSection
 EndGlobal
