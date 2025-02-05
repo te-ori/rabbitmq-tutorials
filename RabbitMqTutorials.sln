@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorrelationId", "03_Message
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageId", "03_Messages\MessageProperties\MessageId\MessageId.csproj", "{F8CBE0CC-84CF-437D-8D16-166859D12F07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expiration", "03_Messages\MessageProperties\Expiration\Expiration.csproj", "{52E9ECE1-8228-487E-8B41-4A665C303BC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,10 @@ Global
 		{F8CBE0CC-84CF-437D-8D16-166859D12F07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8CBE0CC-84CF-437D-8D16-166859D12F07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8CBE0CC-84CF-437D-8D16-166859D12F07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E9ECE1-8228-487E-8B41-4A665C303BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E9ECE1-8228-487E-8B41-4A665C303BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E9ECE1-8228-487E-8B41-4A665C303BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E9ECE1-8228-487E-8B41-4A665C303BC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,5 +128,6 @@ Global
 		{13CF02F2-6446-4897-BE5E-9EC997EA2E0F} = {D19307D7-51BA-4450-8A0F-94DCF9205F6F}
 		{B0E48225-A85A-4B3F-B66B-685948B9DF20} = {D19307D7-51BA-4450-8A0F-94DCF9205F6F}
 		{F8CBE0CC-84CF-437D-8D16-166859D12F07} = {D19307D7-51BA-4450-8A0F-94DCF9205F6F}
+		{52E9ECE1-8228-487E-8B41-4A665C303BC2} = {D19307D7-51BA-4450-8A0F-94DCF9205F6F}
 	EndGlobalSection
 EndGlobal
