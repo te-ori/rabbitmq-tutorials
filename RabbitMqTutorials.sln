@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageId", "03_Messages\Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Expiration", "03_Messages\MessageProperties\Expiration\Expiration.csproj", "{52E9ECE1-8228-487E-8B41-4A665C303BC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReplyTo", "03_Messages\MessageProperties\ReplyTo\ReplyTo.csproj", "{5B23C9B0-0E86-4C53-9E5C-F405F4FD2B08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,10 @@ Global
 		{52E9ECE1-8228-487E-8B41-4A665C303BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52E9ECE1-8228-487E-8B41-4A665C303BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52E9ECE1-8228-487E-8B41-4A665C303BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B23C9B0-0E86-4C53-9E5C-F405F4FD2B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B23C9B0-0E86-4C53-9E5C-F405F4FD2B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B23C9B0-0E86-4C53-9E5C-F405F4FD2B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B23C9B0-0E86-4C53-9E5C-F405F4FD2B08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,5 +135,6 @@ Global
 		{B0E48225-A85A-4B3F-B66B-685948B9DF20} = {D19307D7-51BA-4450-8A0F-94DCF9205F6F}
 		{F8CBE0CC-84CF-437D-8D16-166859D12F07} = {D19307D7-51BA-4450-8A0F-94DCF9205F6F}
 		{52E9ECE1-8228-487E-8B41-4A665C303BC2} = {D19307D7-51BA-4450-8A0F-94DCF9205F6F}
+		{5B23C9B0-0E86-4C53-9E5C-F405F4FD2B08} = {D19307D7-51BA-4450-8A0F-94DCF9205F6F}
 	EndGlobalSection
 EndGlobal
