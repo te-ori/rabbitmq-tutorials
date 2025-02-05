@@ -1,13 +1,18 @@
 function New-RabbitMQProject {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$ProjectName,
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [string]$OutputDirectory
     )
 
     $ProjectDirectory = Join-Path -Path $OutputDirectory -ChildPath $ProjectName
+
+    $pathParts = $ProjectDirectory -split '[\\/]'| Where-Object { $_ -ne '.' }   | ForEach-Object { Format-Name -i $_ }
+    Write-Host "Formatted path parts: $pathParts" -ForegroundColor Cyan
+    $joinedNamespace = $pathParts -join '.'
+    Write-Host "Joined path as namespace: $joinedNamespace" -ForegroundColor Magenta
 
     if ( !(Test-Path $ProjectDirectory)) {
         New-Item -Path $ProjectDirectory -ItemType Directory
@@ -33,11 +38,8 @@ function New-RabbitMQProject {
     Write-Host "Renamed Program.cs to '$ProgramFileName'"
 
     # Add using statements to $ProjectName.Program.cs
-    $currentContent = Get-Content "$ProjectDirectory\$ProgramFileName" -Raw
-    Write-Host "Current content read from '$ProjectDirectory\$ProgramFileName'"
-
-    $namespace= "$($ProjectDirectory | Select-String -Pattern "^([\W\d]+).([a-zA-Z\d]+)" | % {$_.Matches[0].Groups[2].Value}).$($ProjectName)"
-    Write-Host "Namespace: $namespace"
+    # $currentContent = Get-Content "$ProjectDirectory\$ProgramFileName" -Raw
+    # Write-Host "Current content read from '$ProjectDirectory\$ProgramFileName'"
 
     $newContent = @"
 using static System.Console;
@@ -45,7 +47,7 @@ using RabbitMQ.Client;
 using Common;
 using System.Threading.Tasks;
 
-namespace $namespace;
+namespace $joinedNamespace;
 
 class Program
 {
@@ -68,4 +70,15 @@ class Program
     dotnet sln add "$ProjectFilePath"
 
     Write-Host "Created project $ProjectName with RabbitMQ.Client package and Common project reference"
+}
+
+function Format-Name {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$i
+    )
+    Write-Host "Formatting name: $i" -ForegroundColor Cyan
+    $name = ($i | Select-String -Pattern "^([\W\d]+)?(.+)" | % { $_.Matches[0].Groups[2].Value -replace "[ %]", "_" })
+    Write-Host "Formatted name: $name" -ForegroundColor Cyan
+    return $name
 }
