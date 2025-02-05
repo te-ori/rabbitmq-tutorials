@@ -1,9 +1,6 @@
 using static System.Console;
 using RabbitMQ.Client;
-using Common;
-using System.Threading.Tasks;
 using RabbitMQ.Client.Events;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Messages.AckNack;
 

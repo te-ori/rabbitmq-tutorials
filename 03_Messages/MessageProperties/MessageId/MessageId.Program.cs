@@ -35,7 +35,7 @@ class Program
             var json = eventArgs.Body.ToMessageString();
             var message = JsonSerializer.Deserialize<ChangeBalanceMessage>(json);
 
-            if (_processedMessages.Contains(eventArgs.BasicProperties.MessageId))
+            if (_processedMessages.Contains(eventArgs.BasicProperties.MessageId!))
             {
                 ForegroundColor = ConsoleColor.Red;
                 WriteLine($"Message {eventArgs.BasicProperties.MessageId} already processed");
@@ -43,9 +43,9 @@ class Program
                 return;
             }
 
-            _processedMessages.Add(eventArgs.BasicProperties.MessageId);
+            _processedMessages.Add(eventArgs.BasicProperties.MessageId!);
 
-            if (_accountBalances.ContainsKey(message.AccountId))
+            if (_accountBalances.ContainsKey(message!.AccountId))
             {
                 _accountBalances[message.AccountId] += message.Amount;
                 ForegroundColor = ConsoleColor.Green;
