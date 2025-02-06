@@ -72,18 +72,24 @@ class Program
             WriteLine("If `autoDelete` is set to `true`, the queue will be deleted when there is no any consumer listen to it.");
             WriteLine("we create a channel which will dissapear when loop iteated to next iteration.");
             WriteLine("So the only consumer of it will goes then queue also will deleted automatically.");
-            Write("Enter reply-queue name: ");
+            Write("Enter reply-queue name (if you do not provide a name, rabbitmq give a random name): ");
             string replyQueueName = ReadLine();
 
-            WriteLine($"Now, if you check the queue in RabbitMQ Management UI, you should see the queue {replyQueueName} in the 'Queues and Streams' tab.");
             using var replyQueueChannel = await connection.CreateChannelAsync();
 
-            await replyQueueChannel.QueueDeclareAsync(
+            var replyQueue = await replyQueueChannel.QueueDeclareAsync(
                 queue: replyQueueName,
                 durable: false,
                 exclusive: false,
                 autoDelete: true,
                 arguments: null);
+
+            if (string.IsNullOrWhiteSpace(replyQueueName))
+            {
+                replyQueueName = replyQueue.QueueName;
+            }
+            
+            WriteLine($"Now, if you check the queue in RabbitMQ Management UI, you should see the queue {replyQueueName} in the 'Queues and Streams' tab.");
 
             await replyQueueChannel.BasicConsumeAsync(
                 queue: replyQueueName,
